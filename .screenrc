@@ -1,0 +1,42 @@
+defkanji UTF-8
+termcapinfo xterm* 'Co#256:pa#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
+# 太字には明るい色を使う
+attrcolor b ".I"
+# 現在の背景色で消去する
+defbce "on"
+# コントロールキーバインドの変更
+escape 
+
+# スタートアップメッセージを消す
+startup_message off
+defencoding utf8
+encoding utf8 utf8
+
+# ベルの時はメッセージ（＋音）を出す
+bell_msg "Bell in window %"
+
+# 端末が落ちたら自動的にデタッチする
+autodetach on
+# # 新しいウィンドウを生成するときのコマンド
+shell $SHELL
+# ログファイルのファイル名
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+# # 標準でログをとる
+deflog on
+
+# ウィンドウ・サイズ変更
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^] command
+bind -c resize j eval 'resize +1' 'command -c resize'
+bind -c resize k eval 'resize -1' 'command -c resize'
+
+hardstatus on
+hardstatus alwayslastline "%{= Wk} [%02c] %`%-w%{=b bw}%n %t%{-}%+w %-040=%{b km} %l %{.b} %Y/%m/%d %C:%s %A"
+# キャプションを常に表示
+caption always "%{b bw} %?%F%{b Gk}%? %?%h%:%t(screen #%n)%? %{-}"
+
+#sorendition "= Rk"
+
+#hardstatus alwayslastline "screen | %w | %u %= %m/%d %D %c"
+#termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+#termcapinfo xterm-color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
