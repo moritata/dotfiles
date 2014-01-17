@@ -41,6 +41,10 @@ case ${UID} in
   ;;
 esac
 
+#TERM="xterm-256color"
+#TERM="screen-256color"
+TERM="xterm"
+
 case "${TERM}" in
   kterm*|xterm)
   precmd() {
@@ -69,10 +73,13 @@ ssh_screen(){
  eval server=\${$#}
  screen -t $server ssh "$@"
 }
-if [ x"$TERM" = x"screen-bce" ]; then
+#if [ x"$TERM" = x"screen-bce" || x"$TERM" = x"xterm-256color" ]; then
+if [[ "$TERM" = "screen-bce" || "$TERM" = "xterm-256color" || "$TERM" = "xterm" ]]; then
   alias xssh=ssh_screen
 fi
 
+
+export TERM
 
 #JAVA_HOME="/usr/java"
 #PATH=${JAVA_HOME}/bin:${PATH}
@@ -119,10 +126,11 @@ fi
 #ORACLE_OWNER=oracle
 #ORACLE_SID=XE
 #NLS_LANG=Japanese_Japan.UTF8
-##LANG=ja_JP.UTF-8
+LANG=ja_JP.UTF-8
 #LSNR=$ORACLE_HOME/bin/lsnrctl
 #SQLPLUS=$ORACLE_HOME/bin/sqlplus
 #
+export LANG
 
 ## Amaqzon Web Service Environment
 AWS_CREDENTIAL_FILE=/home/ec2-user/.aws/credential-file.txt
@@ -137,4 +145,5 @@ export AWS_CREDENTIAL_FILE EC2_PRIVATE_KEY EC2_CERT EC2_URL
 PATH=~/bin:/usr/local/bin:$PATH
 export PATH
 
-[[ -s "/home/morita/.rvm/scripts/rvm" ]] && source "/home/morita/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+#[[ -s "/home/morita/.rvm/scripts/rvm" ]] && source "/home/morita/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
