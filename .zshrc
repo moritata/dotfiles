@@ -1,3 +1,7 @@
+#
+# $id$
+#
+
 autoload -U compinit
 compinit
 zstyle ':completion:*' list-colors ''
@@ -26,18 +30,21 @@ fi
 
 case ${UID} in
 0)
-  PROMPT="%B%{[36m%}%/#%{[m%}%b "
-  PROMPT2="%B%{[36m%}%_#%{[m%}%b "
-  SPROMPT="%B%{[36m%}%r is correct? [n,y,a,e]:%{[m%}%b "
+  PROMPT="%B%{\e[36m%}%/#%{\e[m%}%b "
+  PROMPT2="%B%{\e[36m%}%_#%{[m%}%b "
+  SPROMPT="%B%{\e[36m%}%r is correct? [n,y,a,e]:%{\e[m%}%b "
+  BPROMPT=$"%{\e[34m%}%n@%U%m%u%{\e[37m%}"
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-  PROMPT="%{[34m%}${HOST%%.*}[37m%}:${PROMPT}"
+  PROMPT="%{\e[34m%}${HOST%%.*}\e[37m%}:${PROMPT}"
+  PROMPT="${BPROMPT}:${PROMPT}"
   ;;
 *)
-  PROMPT="%{[36m%}%~$%{[m%} "
-  PROMPT2="%{[36m%}%_$%{[m%} "
-  SPROMPT="%{[[36m%}%r is correct? [n,y,a,e]:%{[m%} "
+  PROMPT="%{[36m%}%~$%{\e[m%} "
+  PROMPT2="%{\e[36m%}%_$%{\e[m%} "
+  SPROMPT="%{\e[[36m%}%r is correct? [n,y,a,e]:%{\e[m%} "
+  BPROMPT=$'%{\e[33m%}%n@%U%m%u%{\e[37m%}'
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-  PROMPT="%{[33m%}%n@${HOST%%.*}[37m%}:${PROMPT}"
+  PROMPT="${BPROMPT}:${PROMPT}"
   ;;
 esac
 
@@ -122,13 +129,19 @@ export TERM
 #SYBROOT="/opt/sybase"
 #export SYBROOT
 
+#
+### Oracle Product Environment variables
+#
 #ORACLE_HOME=/usr/lib/oracle/xe/app/oracle/product/10.2.0/server
 #ORACLE_OWNER=oracle
 #ORACLE_SID=XE
-#NLS_LANG=Japanese_Japan.UTF8
-LANG=ja_JP.UTF-8
 #LSNR=$ORACLE_HOME/bin/lsnrctl
 #SQLPLUS=$ORACLE_HOME/bin/sqlplus
+#export ORACLE_HOME ORACLE_OWNER ORACLE_SID LSNR SQLPLUS NLS_LANG
+#PATH=$ORACLE_HOME/bin:$PATH
+
+#NLS_LANG=Japanese_Japan.UTF8
+LANG=ja_JP.UTF-8
 #
 export LANG
 
@@ -137,13 +150,11 @@ AWS_CREDENTIAL_FILE=/home/ec2-user/.aws/credential-file.txt
 EC2_PRIVATE_KEY=~/.aws/pk-ULUGJGSZJ7KBOTULIFST73LZI757AGYT.pem
 EC2_CERT=~/.aws/cert-ULUGJGSZJ7KBOTULIFST73LZI757AGYT.pem
 EC2_URL=http://ec2.ap-northeast-1.amazonaws.com/
-
-
-#export ORACLE_HOME ORACLE_OWNER ORACLE_SID LSNR SQLPLUS NLS_LANG
-#PATH=$ORACLE_HOME/bin:$PATH
 export AWS_CREDENTIAL_FILE EC2_PRIVATE_KEY EC2_CERT EC2_URL
+
 PATH=~/bin:/usr/local/bin:$PATH
 export PATH
 
-#[[ -s "/home/morita/.rvm/scripts/rvm" ]] && source "/home/morita/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "/home/morita/.rvm/scripts/rvm" ]] && source "/home/morita/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH
