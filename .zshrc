@@ -39,9 +39,9 @@ case ${UID} in
   PROMPT="${BPROMPT}:${PROMPT}"
   ;;
 *)
-  PROMPT="%{[36m%}%~$%{\e[m%} "
-  PROMPT2="%{\e[36m%}%_$%{\e[m%} "
-  SPROMPT="%{\e[[36m%}%r is correct? [n,y,a,e]:%{\e[m%} "
+  PROMPT=$'%{\e[36m%}%~$%{\e[m%} '
+  PROMPT2=$'%{\e[36m%}%_$%{\e[m%} '
+  SPROMPT=$'%{\e[[36m%}%r is correct? [n,y,a,e]:%{\e[m%} '
   BPROMPT=$'%{\e[33m%}%n@%U%m%u%{\e[37m%}'
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
   PROMPT="${BPROMPT}:${PROMPT}"
