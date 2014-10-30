@@ -90,6 +90,8 @@ NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'grep.vim'
 
 " neobundle close
 call neobundle#end()
