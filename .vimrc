@@ -1,5 +1,6 @@
+
 " 各種設定
-set encoding=utf8 tabstop=2 shiftwidth=2 expandtab autoindent nocompatible nomodeline
+set encoding=utf8 tabstop=2 shiftwidth=2 expandtab autoindent nocompatible nomodeline autoread
 " 文字コードの自動認識
 set fileencodings=utf8,euc-jp,sjis,iso-2022-jp
 " 改行コードの自動認識
@@ -40,3 +41,68 @@ function! GetStatusEx()
   endif
   return str
 endfunction
+
+filetype off
+
+" Vundle setup
+" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" :BundleInstall
+"
+set rtp+=~/.vim/vundle.git
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'chase/vim-ansible-yaml'
+
+Bundle 'clones/vim-l9'
+Bundle 'FuzzyFinder'
+Bundle 'Shougo/neocomplcache'
+Bundle 'thinca/vim-quickrun'
+
+"ruby
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-cucumber'
+
+"js
+Bundle 'JavaScript-syntax'
+Bundle 'itspriddle/vim-javascript-indent'
+
+"php
+"Bundle 'cakephp.vim'
+
+if has('vim_starting')
+  " bundle directory setup
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  " import neobundle
+  " mkdir -p ~/.vim/bundle
+  " git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
+" manage neobundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" plugins
+NeoBundle 'Flake8-vim'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'hynek/vim-python-pep8-indent'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdtree'
+
+" neobundle close
+call neobundle#end()
+
+filetype indent plugin on
+
+NeoBundleCheck
+
+let g:PyFlakeOnWrite = 1
+let g:PyFlakeCheckers = 'pep8.mccabe.pyflakes'
+let g:PyFlakeDefaultComplexity=10
+
+let g:syntastic_python_chekers  = ['pyflakes','pep8']
+
+
+
