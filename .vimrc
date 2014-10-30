@@ -77,7 +77,7 @@ if has('vim_starting')
   " import neobundle
   " mkdir -p ~/.vim/bundle
   " git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
 endif
 
 " manage neobundle
