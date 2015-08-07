@@ -45,28 +45,28 @@ endfunction
 filetype off
 
 " Vundle setup
-" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 " :BundleInstall
 "
-set rtp+=~/.vim/vundle.git
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'chase/vim-ansible-yaml'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'chase/vim-ansible-yaml'
 
-Bundle 'clones/vim-l9'
-Bundle 'FuzzyFinder'
-Bundle 'Shougo/neocomplcache'
-Bundle 'thinca/vim-quickrun'
+Plugin 'clones/vim-l9'
+Plugin 'FuzzyFinder'
+Plugin 'Shougo/neocomplcache'
+Plugin 'thinca/vim-quickrun'
 
 "ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-cucumber'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-cucumber'
 
 "js
-Bundle 'JavaScript-syntax'
-Bundle 'itspriddle/vim-javascript-indent'
+Plugin 'JavaScript-syntax'
+Plugin 'itspriddle/vim-javascript-indent'
 
 "php
 "Bundle 'cakephp.vim'
