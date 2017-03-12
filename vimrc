@@ -47,10 +47,15 @@ filetype off
 " Vundle setup
 " git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 " :BundleInstall
-"
+" Ref. : https://github.com/VundleVim/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git \
+" ~/.vim/bundle/Vundle.vim
+" :PluginInstall
+" 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'chase/vim-ansible-yaml'
 
@@ -70,6 +75,8 @@ Plugin 'itspriddle/vim-javascript-indent'
 
 "php
 "Bundle 'cakephp.vim'
+
+call vundle#end()
 
 if has('vim_starting')
   " bundle directory setup
