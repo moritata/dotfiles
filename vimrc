@@ -14,6 +14,9 @@ highlight Statusline term=NONE cterm=NONE ctermfg=black ctermbg=white
 set tags+=tags;
 " 行番号の表示
 "set number
+" 自動改行オフ
+set textwidth=0
+set formatoptions=q
 
 " シンタックスハイライトを有効
 syntax on
@@ -47,11 +50,15 @@ filetype off
 " Vundle setup
 " git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 " :BundleInstall
-"
+" Ref. : https://github.com/VundleVim/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" :PluginInstall
+" 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'gmarik/Vundle.vim'
 Plugin 'chase/vim-ansible-yaml'
 
 Plugin 'clones/vim-l9'
@@ -70,6 +77,8 @@ Plugin 'itspriddle/vim-javascript-indent'
 
 "php
 "Bundle 'cakephp.vim'
+
+call vundle#end()
 
 if has('vim_starting')
   " bundle directory setup
@@ -107,4 +116,6 @@ let g:PyFlakeDefaultComplexity=10
 let g:syntastic_python_chekers  = ['pyflakes','pep8']
 
 
-
+" 自動改行オフ
+set textwidth=0
+set formatoptions=q

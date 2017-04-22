@@ -147,8 +147,10 @@ export LANG
 
 ## Amaqzon Web Service Environment
 AWS_CREDENTIAL_FILE=/home/ec2-user/.aws/credential-file.txt
-EC2_PRIVATE_KEY=~/.aws/pk-ULUGJGSZJ7KBOTULIFST73LZI757AGYT.pem
-EC2_CERT=~/.aws/cert-ULUGJGSZJ7KBOTULIFST73LZI757AGYT.pem
+##EC2_PRIVATE_KEY=~/.aws/aaa.pem
+## EC2_CERT=~/.aws/cert-aaa.pem
+EC2_PRIVATE_KEY=
+EC2_CERT=
 EC2_URL=http://ec2.ap-northeast-1.amazonaws.com/
 export AWS_CREDENTIAL_FILE EC2_PRIVATE_KEY EC2_CERT EC2_URL
 
