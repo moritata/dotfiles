@@ -56,7 +56,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'gmarik/Vundle.vim'
+"Plugin 'gmarik/Vundle.vim'
 Plugin 'chase/vim-ansible-yaml'
 
 Plugin 'clones/vim-l9'
@@ -99,6 +99,8 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
+NeoBundle 'vim-erlang/vim-erlang-runtime'
+NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
 
 " neobundle close
 call neobundle#end()
@@ -113,5 +115,9 @@ let g:PyFlakeDefaultComplexity=10
 
 let g:syntastic_python_chekers  = ['pyflakes','pep8']
 
+"""" erlang setting """"
+au BufNewFile,BufRead *.erl setif erlang
+au FileType erlang setlocal makeprg=erlc\ %
+au FileType erlang setlocal errorformat=%f:%l:\ %m
 
 
