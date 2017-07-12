@@ -14,6 +14,9 @@ highlight Statusline term=NONE cterm=NONE ctermfg=black ctermbg=white
 set tags+=tags;
 " 行番号の表示
 "set number
+" 自動改行オフ
+set textwidth=0
+set formatoptions=q
 
 " シンタックスハイライトを有効
 syntax on
@@ -48,8 +51,7 @@ filetype off
 " git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 " :BundleInstall
 " Ref. : https://github.com/VundleVim/Vundle.vim
-" git clone https://github.com/VundleVim/Vundle.vim.git \
-" ~/.vim/bundle/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " :PluginInstall
 " 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -120,4 +122,6 @@ au BufNewFile,BufRead *.erl setif erlang
 au FileType erlang setlocal makeprg=erlc\ %
 au FileType erlang setlocal errorformat=%f:%l:\ %m
 
-
+" 自動改行オフ
+set textwidth=0
+set formatoptions=q
