@@ -14,6 +14,9 @@ highlight Statusline term=NONE cterm=NONE ctermfg=black ctermbg=white
 set tags+=tags;
 " 行番号の表示
 "set number
+" 自動改行オフ
+set textwidth=0
+set formatoptions=q
 
 " シンタックスハイライトを有効
 syntax on
@@ -48,8 +51,7 @@ filetype off
 " git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
 " :BundleInstall
 " Ref. : https://github.com/VundleVim/Vundle.vim
-" git clone https://github.com/VundleVim/Vundle.vim.git \
-" ~/.vim/bundle/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " :PluginInstall
 " 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -91,20 +93,20 @@ if dein#load_state(expand('~/.vim/dein'))
 
   call dein#add('Shougo/dein.vim')
   call dein#add('Shougo/vimproc.vim')
-  call dein#add('Shougo/neocompile.vim')
+  call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/neosnippet')
-  call dein#add('Flake8-vim')
+  call dein#add('andviro/flake8-vim')
   call dein#add('davidhalter/jedi-vim')
   call dein#add('hynek/vim-python-pep8-indent')
   call dein#add('Townk/vim-autoclose')
   call dein#add('scrooloose/syntastic')
   call dein#add('scrooloose/nerdtree')
   call dein#add('thinca/vim-quickrun')
-  call dein#add('grep.vim')
+  call dein#add('vim-scripts/grep.vim')
   call dein#add('vim-erlang/vim-erlang-runtime')
   call dein#add('vim-erlang/vim-erlang-omnicomplete')
-  call dein#add('Rikka/InstantRst')
+  call dein#add('Rykka/InstantRst')
 endif
 
 filetype plugin indent on
@@ -121,4 +123,6 @@ au BufNewFile,BufRead *.erl setf erlang
 au FileType erlang setlocal makeprg=erlc\ %
 au FileType erlang setlocal errorformat=%f:%l:\ %m
 
-
+" 自動改行オフ
+set textwidth=0
+set formatoptions=q

@@ -76,6 +76,19 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+
 ssh_screen(){
  eval server=\${$#}
  screen -t $server ssh "$@"
@@ -160,3 +173,21 @@ export PATH
 [[ -s "/home/morita/.rvm/scripts/rvm" ]] && source "/home/morita/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PYENV_ROOT=$HOME/.pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f $HOME/google-cloud-sdk/path.zsh.inc ]; then
+  source "$HOME/google-cloud-sdk/path.zsh.inc"
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then
+  source "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
