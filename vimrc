@@ -76,6 +76,9 @@ Plugin 'itspriddle/vim-javascript-indent'
 "php
 "Bundle 'cakephp.vim'
 
+" reStructured
+Plugin 'Rykka/riv.vim'
+
 call vundle#end()
 
 if has('vim_starting')
@@ -116,7 +119,7 @@ let g:PyFlakeDefaultComplexity=10
 let g:syntastic_python_chekers  = ['pyflakes','pep8']
 
 """" erlang setting """"
-au BufNewFile,BufRead *.erl setif erlang
+au BufNewFile,BufRead *.erl setf erlang
 au FileType erlang setlocal makeprg=erlc\ %
 au FileType erlang setlocal errorformat=%f:%l:\ %m
 
