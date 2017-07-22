@@ -104,6 +104,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle 'vim-erlang/vim-erlang-runtime'
 NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+NeoBundle 'Rikka/InstantRst'
 
 " neobundle close
 call neobundle#end()
