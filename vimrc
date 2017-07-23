@@ -15,6 +15,7 @@ set tags+=tags;
 " 行番号の表示
 "set number
 " 自動改行オフ
+set tw=0
 set textwidth=0
 set formatoptions=q
 
@@ -47,70 +48,79 @@ endfunction
 
 filetype off
 
-" Vundle setup
-" git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/Vundle.vim
-" :BundleInstall
-" Ref. : https://github.com/VundleVim/Vundle.vim
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" :PluginInstall
-" 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+""
+"" curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+"" sh ./installer.sh {specify the installation directory}
+"" sh ./installer.sh ~/.vim/dein
 
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'gmarik/Vundle.vim'
-Plugin 'chase/vim-ansible-yaml'
-
-Plugin 'clones/vim-l9'
-Plugin 'FuzzyFinder'
-Plugin 'Shougo/neocomplcache'
-Plugin 'thinca/vim-quickrun'
-
-"ruby
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-cucumber'
-
-"js
-Plugin 'JavaScript-syntax'
-Plugin 'itspriddle/vim-javascript-indent'
-
-"php
-"Bundle 'cakephp.vim'
-
-" reStructured
-Plugin 'Rykka/riv.vim'
-
-call vundle#end()
-
+"dein scripts---------------------------------------------------
 if &compatible
-  set nocompatible
+  set nocompatible " Be iMproved
 endif
+
+" Required:
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
+" Required:
 if dein#load_state(expand('~/.vim/dein'))
   call dein#begin(expand('~/.vim/dein'))
 
+  " Let dein manage dein
+  " Required:
   call dein#add('Shougo/dein.vim')
+
+  " Add or Remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('editorconfig/editorconfig-vim')
   call dein#add('Shougo/vimproc.vim')
   call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neocomplcache')
   call dein#add('Shougo/neomru.vim')
-  call dein#add('Shougo/neosnippet')
+  "call dein#add('Shougo/neosnippet')
+  call dein#add('mattn/emmet-vim')
+  call dein#add('itchyny/lightline.vim')
   call dein#add('andviro/flake8-vim')
+  call dein#add('chase/vim-ansible-yaml')
   call dein#add('davidhalter/jedi-vim')
   call dein#add('hynek/vim-python-pep8-indent')
   call dein#add('Townk/vim-autoclose')
-  call dein#add('scrooloose/syntastic')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('clones/vim-l9')
+  "call dein#add('scrooloose/syntastic')
   call dein#add('scrooloose/nerdtree')
   call dein#add('thinca/vim-quickrun')
+  call dein#add('vim-ruby/vim-ruby')
+  call dein#add('tpope/vim-rails')
+  call dein#add('tpope/vim-cucumber')
   call dein#add('vim-scripts/grep.vim')
+  call dein#add('vim-scripts/FuzzyFinder')
   call dein#add('vim-erlang/vim-erlang-runtime')
   call dein#add('vim-erlang/vim-erlang-omnicomplete')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('jelera/vim-javascript-syntax')
+  call dein#add('Rykka/clickable.vim')
+  call dein#add('Rykka/riv.vim')
+  call dein#add('vim-syntastic/syntastic')
   call dein#add('Rykka/InstantRst')
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell',{ 'rev': '378e5' })
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
 endif
 
 filetype plugin indent on
 syntax enable
+
+" If you want to install not installed plugins on startup
+" if dein#check_install()
+"   call dein#install()
+" endif
+
+" End dein Scripts----------------------------------------
 
 let g:PyFlakeOnWrite = 1
 let g:PyFlakeCheckers = 'pep8.mccabe.pyflakes'
@@ -123,6 +133,12 @@ au BufNewFile,BufRead *.erl setf erlang
 au FileType erlang setlocal makeprg=erlc\ %
 au FileType erlang setlocal errorformat=%f:%l:\ %m
 
-" 自動改行オフ
-set textwidth=0
-set formatoptions=q
+"--------------------------------
+" status line setting
+"--------------------------------
+set t_Co=256
+set laststatus=2
+set showmode  "現在のモードを表示
+set showcmd   "打ったコマンドをステータスラインの下に表示
+set ruler     "ステータスラインの右側にカーソルの現在位置を表示
+
