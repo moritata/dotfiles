@@ -78,38 +78,39 @@ Plugin 'itspriddle/vim-javascript-indent'
 "php
 "Bundle 'cakephp.vim'
 
+" reStructured
+Plugin 'Rykka/riv.vim'
+
 call vundle#end()
 
-if has('vim_starting')
-  " bundle directory setup
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-  " import neobundle
-  " mkdir -p ~/.vim/bundle
-  " git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle/'))
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state(expand('~/.vim/dein'))
+  call dein#begin(expand('~/.vim/dein'))
+
+  call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/vimproc.vim')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('Shougo/neosnippet')
+  call dein#add('andviro/flake8-vim')
+  call dein#add('davidhalter/jedi-vim')
+  call dein#add('hynek/vim-python-pep8-indent')
+  call dein#add('Townk/vim-autoclose')
+  call dein#add('scrooloose/syntastic')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('vim-scripts/grep.vim')
+  call dein#add('vim-erlang/vim-erlang-runtime')
+  call dein#add('vim-erlang/vim-erlang-omnicomplete')
+  call dein#add('Rykka/InstantRst')
 endif
 
-" manage neobundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" plugins
-NeoBundle 'Flake8-vim'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'hynek/vim-python-pep8-indent'
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'grep.vim'
-NeoBundle 'vim-erlang/vim-erlang-runtime'
-NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
-
-" neobundle close
-call neobundle#end()
-
-filetype indent plugin on
-
-NeoBundleCheck
+filetype plugin indent on
+syntax enable
 
 let g:PyFlakeOnWrite = 1
 let g:PyFlakeCheckers = 'pep8.mccabe.pyflakes'
@@ -118,7 +119,7 @@ let g:PyFlakeDefaultComplexity=10
 let g:syntastic_python_chekers  = ['pyflakes','pep8']
 
 """" erlang setting """"
-au BufNewFile,BufRead *.erl setif erlang
+au BufNewFile,BufRead *.erl setf erlang
 au FileType erlang setlocal makeprg=erlc\ %
 au FileType erlang setlocal errorformat=%f:%l:\ %m
 
