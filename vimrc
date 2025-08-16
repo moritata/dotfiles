@@ -48,69 +48,102 @@ endfunction
 
 filetype off
 
+" vim-plug の開始
+" 
+" Install: curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"               https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Plugin Install Execute: :PlugInstall
+" プラグインをインストールするディレクトリを指定
+call plug#begin('~/.vim/plugged')
+
+" ここに管理したいプラグインを記述していく
+" 例1: NERDTree (ファイルエクスプローラー)
+Plug 'preservim/nerdtree'
+
+" 例2: vim-airline (ステータスラインをおしゃれに)
+Plug 'vim-airline/vim-airline'
+
+" 例3: fzf.vim (あいまい検索) - fzf本体のインストールが別途必要
+Plug 'junegunn/fzf.vim'
+
+"  call dein#add('Townk/vim-autoclose')
+Plug 'Townk/vim-autoclose'
+
+"  call dein#add('vim-erlang/vim-erlang-runtime')
+"  call dein#add('vim-erlang/vim-erlang-omnicomplete')
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+"  call dein#add('pangloss/vim-javascript')
+"  call dein#add('jelera/vim-javascript-syntax')
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+
+" vim-plug の終了
+call plug#end()
+
 ""
 "" curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 "" sh ./installer.sh {specify the installation directory}
 "" sh ./installer.sh ~/.vim/dein
 
 "dein scripts---------------------------------------------------
-if &compatible
-  set nocompatible " Be iMproved
-endif
-
-" Required:
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-
-" Required:
-if dein#load_state(expand('~/.vim/dein'))
-  call dein#begin(expand('~/.vim/dein'))
-
-  " Let dein manage dein
-  " Required:
-  call dein#add('Shougo/dein.vim')
-
-  " Add or Remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('Shougo/vimproc.vim')
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('Shougo/neocomplcache')
-  call dein#add('Shougo/neomru.vim')
-  "call dein#add('Shougo/neosnippet')
-  call dein#add('mattn/emmet-vim')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('andviro/flake8-vim')
-  call dein#add('chase/vim-ansible-yaml')
-  call dein#add('davidhalter/jedi-vim')
-  call dein#add('hynek/vim-python-pep8-indent')
-  call dein#add('Townk/vim-autoclose')
-  call dein#add('thinca/vim-quickrun')
-  call dein#add('clones/vim-l9')
-  "call dein#add('scrooloose/syntastic')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('thinca/vim-quickrun')
-  call dein#add('vim-ruby/vim-ruby')
-  call dein#add('tpope/vim-rails')
-  call dein#add('tpope/vim-cucumber')
-  call dein#add('vim-scripts/grep.vim')
-  call dein#add('vim-scripts/FuzzyFinder')
-  call dein#add('vim-erlang/vim-erlang-runtime')
-  call dein#add('vim-erlang/vim-erlang-omnicomplete')
-  call dein#add('pangloss/vim-javascript')
-  call dein#add('jelera/vim-javascript-syntax')
-  call dein#add('Rykka/clickable.vim')
-  call dein#add('Rykka/riv.vim')
-  call dein#add('vim-syntastic/syntastic')
-  call dein#add('Rykka/InstantRst')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell',{ 'rev': '378e5' })
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
+"if &compatible
+"  set nocompatible " Be iMproved
+"endif
+"
+"" Required:
+"set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+"
+"" Required:
+"if dein#load_state(expand('~/.vim/dein'))
+"  call dein#begin(expand('~/.vim/dein'))
+"
+"  " Let dein manage dein
+"  " Required:
+"  call dein#add('Shougo/dein.vim')
+"
+"  " Add or Remove your plugins here:
+"  call dein#add('Shougo/neosnippet.vim')
+"  call dein#add('Shougo/neosnippet-snippets')
+"  call dein#add('editorconfig/editorconfig-vim')
+"  call dein#add('Shougo/vimproc.vim')
+"  call dein#add('Shougo/neocomplete.vim')
+"  call dein#add('Shougo/neocomplcache')
+"  call dein#add('Shougo/neomru.vim')
+"  "call dein#add('Shougo/neosnippet')
+"  call dein#add('mattn/emmet-vim')
+"  call dein#add('itchyny/lightline.vim')
+"  call dein#add('andviro/flake8-vim')
+"  call dein#add('chase/vim-ansible-yaml')
+"  call dein#add('davidhalter/jedi-vim')
+"  call dein#add('hynek/vim-python-pep8-indent')
+"  call dein#add('Townk/vim-autoclose')
+"  call dein#add('thinca/vim-quickrun')
+"  call dein#add('clones/vim-l9')
+"  "call dein#add('scrooloose/syntastic')
+"  call dein#add('scrooloose/nerdtree')
+"  call dein#add('thinca/vim-quickrun')
+"  call dein#add('vim-ruby/vim-ruby')
+"  call dein#add('tpope/vim-rails')
+"  call dein#add('tpope/vim-cucumber')
+"  call dein#add('vim-scripts/grep.vim')
+"  call dein#add('vim-scripts/FuzzyFinder')
+"  call dein#add('vim-erlang/vim-erlang-runtime')
+"  call dein#add('vim-erlang/vim-erlang-omnicomplete')
+"  call dein#add('pangloss/vim-javascript')
+"  call dein#add('jelera/vim-javascript-syntax')
+"  call dein#add('Rykka/clickable.vim')
+"  call dein#add('Rykka/riv.vim')
+"  call dein#add('vim-syntastic/syntastic')
+"  call dein#add('Rykka/InstantRst')
+"
+"  " You can specify revision/branch/tag.
+"  call dein#add('Shougo/vimshell',{ 'rev': '378e5' })
+"
+"  " Required:
+"  call dein#end()
+"  call dein#save_state()
+"endif
 
 filetype plugin indent on
 syntax enable
